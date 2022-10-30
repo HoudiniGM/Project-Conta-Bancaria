@@ -25,7 +25,20 @@ header img {
 
 
 /* MAIN ---------------------------------- */
+/* MAIN >>> DADOS ------------------------ */
+#dados {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #5555;
+    width: 400px;
+    padding: 20px;
+    gap: 5px;
+}
 
+#dados span {
+    align-self: center;
+}
+/* MAIN >>> DADOS ------------------------ */
 /* ---------------------------------- MAIN */
 
 
