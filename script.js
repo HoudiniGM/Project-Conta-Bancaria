@@ -1,8 +1,11 @@
 // VARIÁVEIS ----------------------------
 let listaDados = [];
-const form = document.getElementById('dados');
+const dados = document.getElementById('dados');
+const operacoes = document.getElementById('operacoes');
 let opcoes = document.getElementById('opcoes');
 let valor = document.getElementById('valor');
+let conta = document.getElementById('conta');
+let usarSenha = document.getElementById('usarSenha');
 
 
 
@@ -35,6 +38,53 @@ function desabilitarValor(){
     }
 }
 
+function sacar(cliente){
+    cliente['saldo'] -= valor.value;
+}
+
+function depositar(cliente){
+    cliente['saldo'] += parseInt(valor.value);
+}
+
+function consultarSaldo(cliente){
+    alert(`Seu saldo é de R$${cliente['saldo']},00 reais`);
+}
+
+function operar(evento){
+    evento.preventDefault();
+    let cliente = listaDados[0];
+
+    if (valor.value < 0){
+        alert('Valor inválido');
+    } else if (conta.value != cliente['conta']){
+        alert('Conta não existente');
+    } else if (usarSenha.value !== cliente['definirSenha']){
+        alert('Senha incorreta');
+    } else {
+        switch (opcoes.value){
+            case '0':
+                alert('Selecione uma operação');
+                break
+            case '1':
+                if (cliente['saldo'] < parseInt(valor.value)){
+                    alert('Saldo insuficiente');
+                } else {
+                    sacar(cliente);
+                    alert(`Você sacou R$${valor.value},00 reais`);
+                }
+                break
+            case '2':
+                depositar(cliente);
+                alert(`Você depositou R$${valor.value},00 reais`);
+                break
+            case '3':
+                consultarSaldo(cliente);
+                break
+        }
+    }
+}
+
 // CHAMADAS DE FUNÇÕES -------------------
-form.addEventListener('submit', criarDado);
+dados.addEventListener('submit', criarDado);
+operacoes.addEventListener('submit', operar);
 opcoes.addEventListener('click', desabilitarValor);
