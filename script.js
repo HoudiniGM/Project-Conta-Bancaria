@@ -1,6 +1,8 @@
 // VARIÁVEIS ----------------------------
 let listaDados = [];
 const form = document.getElementById('dados');
+let opcoes = document.getElementById('opcoes');
+let valor = document.getElementById('valor');
 
 
 
@@ -25,6 +27,14 @@ function criarDado(evento){
     }
 }
 
+function desabilitarValor(){
+    if (opcoes.value == 3){
+        valor.disabled = true;
+    } else {
+        valor.disabled = false;
+    }
+}
 
 // CHAMADAS DE FUNÇÕES -------------------
 form.addEventListener('submit', criarDado);
+opcoes.addEventListener('click', desabilitarValor);

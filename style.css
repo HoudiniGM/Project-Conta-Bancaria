@@ -25,19 +25,28 @@ header img {
 
 
 /* MAIN ---------------------------------- */
-/* MAIN >>> DADOS ------------------------ */
-#dados {
+main {
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form {
+    background-color: #1111;
     display: flex;
     flex-direction: column;
     border: 1px solid #5555;
-    width: 400px;
+    width: 300px;
     padding: 20px;
     gap: 5px;
 }
 
-#dados span {
+form span {
     align-self: center;
 }
+/* MAIN >>> DADOS ------------------------ */
+
 /* MAIN >>> DADOS ------------------------ */
 /* ---------------------------------- MAIN */
 

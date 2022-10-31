@@ -31,6 +31,26 @@
                 <button type="reset">LIMPAR</button>
             </span>
         </form>
+
+        <form id="operacoes">
+            <label for="opcoes">Operação</label>
+            <select name="opcoes" id="opcoes">
+                <option value="0">-Selecione uma operação-</option>
+                <option value="1">Saque</option>
+                <option value="2">Depósito</option>
+                <option value="3">Consultar saldo</option>
+            </select>
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" required>
+            <label for="conta">Conta</label>
+            <input type="number" id="conta" required>
+            <label for="usarSenha">Senha</label>
+            <input type="password" id="usarSenha" required>
+            <span>
+                <button>CONFIRMAR</button>
+                <button>LIMPAR</button>
+            </span>
+        </form>
     </main>
     
     <footer>
