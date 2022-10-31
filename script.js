@@ -6,6 +6,7 @@ let opcoes = document.getElementById('opcoes');
 let valor = document.getElementById('valor');
 let conta = document.getElementById('conta');
 let usarSenha = document.getElementById('usarSenha');
+let console = document.getElementById('console');
 
 
 
@@ -24,9 +25,9 @@ function criarDado(evento){
 
     if (dado.definirSenha === document.getElementById('confirmarSenha').value){
         listaDados.push(dado);
-        alert(`Conta criado com sucesso!\nNúmero da conta: ${dado.conta}`)
+        console.innerHTML += `- Conta criado com sucesso!<br>Número da conta: ${dado.conta}<br>`;
     } else {
-        alert('Senha incorreta');
+        console.innerHTML += `- Senhas não conferem<br>`;
     }
 }
 
@@ -47,7 +48,7 @@ function depositar(cliente){
 }
 
 function consultarSaldo(cliente){
-    alert(`Seu saldo é de R$${cliente['saldo']},00 reais`);
+    console.innerHTML += `- Seu saldo é de R$${cliente['saldo']},00 reais<br>`;
 }
 
 function operar(evento){
@@ -55,27 +56,27 @@ function operar(evento){
     let cliente = listaDados[0];
 
     if (valor.value < 0){
-        alert('Valor inválido');
+        console.innerHTML += '- Valor inválido<br>';
     } else if (conta.value != cliente['conta']){
-        alert('Conta não existente');
+        console.innerHTML += '- Conta não existente<br>';
     } else if (usarSenha.value !== cliente['definirSenha']){
-        alert('Senha incorreta');
+        console.innerHTML += '- Senha incorreta<br>';
     } else {
         switch (opcoes.value){
             case '0':
-                alert('Selecione uma operação');
+                console.innerHTML += '- Selecione uma operação<br>'
                 break
             case '1':
                 if (cliente['saldo'] < parseInt(valor.value)){
-                    alert('Saldo insuficiente');
+                    console.innerHTML += '- Saldo insuficiente<br>';
                 } else {
                     sacar(cliente);
-                    alert(`Você sacou R$${valor.value},00 reais`);
+                    console.innerHTML += `- Você sacou R$${valor.value},00 reais<br>`;
                 }
                 break
             case '2':
                 depositar(cliente);
-                alert(`Você depositou R$${valor.value},00 reais`);
+                console.innerHTML += `- Você depositou R$${valor.value},00 reais<br>`;
                 break
             case '3':
                 consultarSaldo(cliente);
